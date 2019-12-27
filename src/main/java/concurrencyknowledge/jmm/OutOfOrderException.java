@@ -4,6 +4,10 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @Created by jasyu 2019/12/26
+ *
+ * 1. a=1;x=b(0);b=1;y=a(1)         x=0,y=1
+ * 2. b=1;y=a(0);a=1;x=b(1)         x=1,y=0
+ * 3. b=1;a=1;x=b(1);y=a(1)         x=1,y=1
  */
 public class OutOfOrderException {
 
@@ -11,7 +15,6 @@ public class OutOfOrderException {
     private static int b = 0, y = 0;
 
     public static void main(String[] args) throws InterruptedException {
-        final CountDownLatch latch = new CountDownLatch(1);
         int i = 0;
 
         for (; ;) {
@@ -21,6 +24,7 @@ public class OutOfOrderException {
             b = 0;
             y = 0;
 
+            final CountDownLatch latch = new CountDownLatch(1);
             Thread one = new Thread(new Runnable() {
                 public void run() {
                     try {
