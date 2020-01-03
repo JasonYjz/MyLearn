@@ -12,13 +12,11 @@ import java.util.concurrent.CountDownLatch;
  * 4. x=b(0);y=a(0);a=1;b=1         x=0,y=0     //重排序指令后的结果
  */
 public class OutOfOrderException {
-
     private static int a = 0, x = 0;
     private static int b = 0, y = 0;
 
     public static void main(String[] args) throws InterruptedException {
         int i = 0;
-
         for (; ;) {
             i++;
             a = 0;
@@ -53,14 +51,11 @@ public class OutOfOrderException {
 
             one.start();
             two.start();
-
             latch.countDown();
-
             one.join();
             two.join();
 
             String result = "[run " + i + "times] x = " + x + ", y = " + y;
-
             if (x == 1 && y == 1) {
                 System.out.println(result);
                 break;
