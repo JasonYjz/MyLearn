@@ -8,6 +8,8 @@ import java.util.concurrent.CountDownLatch;
  * 1. a=1;x=b(0);b=1;y=a(1)         x=0,y=1
  * 2. b=1;y=a(0);a=1;x=b(1)         x=1,y=0
  * 3. b=1;a=1;x=b(1);y=a(1)         x=1,y=1
+ *
+ * 4. x=b(0);y=a(0);a=1;b=1         x=0,y=0     //重排序指令后的结果
  */
 public class OutOfOrderException {
 
@@ -24,7 +26,7 @@ public class OutOfOrderException {
             b = 0;
             y = 0;
 
-            final CountDownLatch latch = new CountDownLatch(1);
+            CountDownLatch latch = new CountDownLatch(1);
             Thread one = new Thread(new Runnable() {
                 public void run() {
                     try {

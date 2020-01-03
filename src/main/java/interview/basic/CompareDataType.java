@@ -31,9 +31,10 @@ public class CompareDataType {
         int aaa = 100;
         TestClass bbb = new TestClass();
         bbb.setMax(10);
+        int ccc = bbb.getMax() == null ? 0 : bbb.getMax();
 
 
-        if (bbb.getMax() != null && aaa > bbb.getMax()) {
+        if (ccc != 0 && aaa > bbb.getMax()) {
             System.out.println("xxxx");
         }else {
             System.out.println("bbbbbbbb");
