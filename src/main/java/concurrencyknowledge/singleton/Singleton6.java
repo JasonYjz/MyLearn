@@ -21,19 +21,19 @@ package concurrencyknowledge.singleton;
  * 加上volatile后，防止出现重排序，确保对象创建是按照1->2->3顺序执行
  **/
 public class Singleton6 {
-    private volatile static Singleton6 INSTANCE;
+    private static Singleton6 instance;
 
     private Singleton6() {
     }
 
     public static Singleton6 getInstance() {
-        if (INSTANCE == null) {
+        if (instance == null) {
             synchronized (Singleton6.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new Singleton6();
+                if (instance == null) {
+                    instance = new Singleton6();
                 }
             }
         }
-        return INSTANCE;
+        return instance;
     }
 }

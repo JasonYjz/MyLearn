@@ -56,7 +56,7 @@ public class OutOfOrderException {
             two.join();
 
             String result = "[run " + i + "times] x = " + x + ", y = " + y;
-            if (x == 1 && y == 1) {
+            if (x == 0 && y == 0) {
                 System.out.println(result);
                 break;
             } else {
