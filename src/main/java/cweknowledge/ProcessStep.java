@@ -18,16 +18,12 @@ public class ProcessStep implements Runnable {
         try {
             synchronized (lock) {
                 while (time != step) {
-                    System.out.println(Thread.currentThread().getName() + "_BeforeWait: step[" + step + "], time:[" + time + "]");
                     lock.wait();
                 }
 
-                System.out.println(Thread.currentThread().getName() + "_AfterWait: step[" + step + "], time:[" + time + "]");
                 // Perform operations
                 time++;
-                System.out.println(Thread.currentThread().getName() + "_BeforeNotify: step[" + step + "], time:[" + time + "]");
                 lock.notify();
-                System.out.println(Thread.currentThread().getName() + "_Finish: step[" + step + "], time:[" + time + "]\r\n");
             }
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt(); // Reset interrupted status
