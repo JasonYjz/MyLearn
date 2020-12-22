@@ -1,4 +1,4 @@
-package concurrencyknowledge;
+package concurrency;
 
 public class Singleton {
     private static Singleton instance;

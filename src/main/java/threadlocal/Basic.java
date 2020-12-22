@@ -1,4 +1,4 @@
-package threadlocakknowledge;
+package threadlocal;
 
 public class Basic {
     private static ThreadLocal<Long> x = ThreadLocal.withInitial(() -> {

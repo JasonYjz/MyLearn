@@ -1,4 +1,4 @@
-package cweknowledge;
+package cwe;
 
 /**
  * Created by jasyu on 2020/12/11.
@@ -17,13 +17,17 @@ public class ProcessStep implements Runnable {
     public void run() {
         try {
             synchronized (lock) {
+                System.out.println(Thread.currentThread().getName() + "_Start: step[" + step + "], time:[" + time + "]");
                 while (time != step) {
+                    System.out.println(Thread.currentThread().getName() + "_WillDoWait: step[" + step + "], time:[" + time + "]");
                     lock.wait();
                 }
 
                 // Perform operations
                 time++;
+                System.out.println(Thread.currentThread().getName() + "_WillDoNotify: step[" + step + "], time:[" + time + "]");
                 lock.notify();
+                System.out.println(Thread.currentThread().getName() + "_Finish: step[" + step + "], time:[" + time + "]\r\n");
             }
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt(); // Reset interrupted status

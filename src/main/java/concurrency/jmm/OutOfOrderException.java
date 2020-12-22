@@ -1,4 +1,4 @@
-package concurrencyknowledge.jmm;
+package concurrency.jmm;
 
 import java.util.concurrent.CountDownLatch;
 

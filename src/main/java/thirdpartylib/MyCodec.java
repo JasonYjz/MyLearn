@@ -1,4 +1,4 @@
-package libknowledge;
+package thirdpartylib;
 
 import org.apache.commons.codec.binary.Base64;
 

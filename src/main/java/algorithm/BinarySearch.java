@@ -1,4 +1,4 @@
-package AlgorithmKnowledge;
+package algorithm;
 
 /**
  * Created by jasyu on 2020/4/21.

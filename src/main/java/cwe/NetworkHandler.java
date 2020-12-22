@@ -1,4 +1,4 @@
-package cweknowledge;
+package cwe;
 
 /**
  * Created by jasyu on 2020/12/8.
